@@ -1,8 +1,6 @@
 package ru.practicum.dinner;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Scanner;
 import java.util.*;
 public class Main {
@@ -54,14 +52,13 @@ public class Main {
         System.out.println("Введите количество наборов, которые нужно сгенерировать:");
 
         int numberOfCombos = scanner.nextInt();
-        scanner.nextLine();
 
         System.out.println("Вводите типы блюда, разделяя символом переноса строки (enter). Для завершения ввода введите пустую строку");
 
         ArrayList<String> dishType = new ArrayList<>();
 
         while (true) { //реализуйте ввод типов блюд
-            String nextItem = scanner.nextLine();;
+            String nextItem = scanner.nextLine();
             if (nextItem.isEmpty()) {
                 break;
             } else {
@@ -74,8 +71,7 @@ public class Main {
         }
         for (int i = 0; i < numberOfCombos; i++) {
             System.out.println("Для набора Комбо №" + (i + 1) + " предлагаются следующие блюда:");
-            for (int j = 0; j < dishType.size(); j++) {
-                String type = dishType.get(j);
+            for (String type : dishType) {
                 int bound = dc.dishes.get(type).size(); // получение размера категорий блюд из хэш-таблицы меню
                 int chooseId = random.nextInt(bound); // получение рандомного числа в заданном диапазоне
                 String dish = dc.dishes.get(type).get(chooseId);
